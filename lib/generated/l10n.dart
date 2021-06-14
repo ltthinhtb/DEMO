@@ -561,10 +561,60 @@ class S {
   }
 
   /// `Team training`
-  String get training {
+  String get training_team {
     return Intl.message(
       'Team training',
+      name: 'training_team',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message(
+      'Total',
+      name: 'total',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Training`
+  String get training {
+    return Intl.message(
+      'Training',
       name: 'training',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Matches`
+  String get matches {
+    return Intl.message(
+      'Matches',
+      name: 'matches',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `YOU`
+  String get you {
+    return Intl.message(
+      'YOU',
+      name: 'you',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AVG`
+  String get avg {
+    return Intl.message(
+      'AVG',
+      name: 'avg',
       desc: '',
       args: [],
     );

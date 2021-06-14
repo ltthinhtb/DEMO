@@ -26,27 +26,30 @@ class _FeedPageState extends State<FeedPage> {
           return DefaultTabController(
             length: 1,
             child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  buildTab(),
-                  SizedBox(height: 10),
-                  buildListPlayerRow(context.read<FeedBloc>().listPlayer),
-                  SizedBox(height: 16),
-                  ListView.separated(
-                    physics: NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return NewsFeedComponent(
-                            newsFeed: _bloc.listNews[index]);
-                      },
-                      separatorBuilder: (context, index) {
-                        return SizedBox(height: 16);
-                      },
-                      itemCount: _bloc.listNews.length),
-                  SizedBox(height: 20)
-                ],
+              child: Container(
+                color: AppColor.darkPrimary,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    buildTab(),
+                    SizedBox(height: 10),
+                    buildListPlayerRow(context.read<FeedBloc>().listPlayer),
+                    SizedBox(height: 16),
+                    ListView.separated(
+                      physics: NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return NewsFeedComponent(
+                              newsFeed: _bloc.listNews[index]);
+                        },
+                        separatorBuilder: (context, index) {
+                          return SizedBox(height: 16);
+                        },
+                        itemCount: _bloc.listNews.length),
+                    SizedBox(height: 20)
+                  ],
+                ),
               ),
             ),
           );
@@ -55,11 +58,12 @@ class _FeedPageState extends State<FeedPage> {
     );
   }
 
+
   Widget buildTab() {
     return TabBar(isScrollable: true, indicatorColor: AppColor.yellow, tabs: [
       Padding(
-        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-        child: Text(S.current.diary),
+        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+        child: Text(S.current.diary,style: Theme.of(context).textTheme.bodyText2,),
       ),
     ]);
   }

@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_photo": MessageLookupByLibrary.simpleMessage("Add photo"),
         "arena": MessageLookupByLibrary.simpleMessage("Arena"),
         "assist": MessageLookupByLibrary.simpleMessage("Assist"),
+        "avg": MessageLookupByLibrary.simpleMessage("AVG"),
         "biography": MessageLookupByLibrary.simpleMessage("Biography"),
         "birthday": MessageLookupByLibrary.simpleMessage("BirthDate"),
         "body_image": MessageLookupByLibrary.simpleMessage("Full Body image"),
@@ -59,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "match_review": MessageLookupByLibrary.simpleMessage("Match Review"),
         "match_review_label": MessageLookupByLibrary.simpleMessage(
             "Describe what he did well and what he could have done better"),
+        "matches": MessageLookupByLibrary.simpleMessage("Matches"),
         "minute": MessageLookupByLibrary.simpleMessage("Minute"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "opponent_club": MessageLookupByLibrary.simpleMessage("Opponent Club"),
@@ -81,13 +83,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "support": MessageLookupByLibrary.simpleMessage("Support"),
         "team_performance":
             MessageLookupByLibrary.simpleMessage("Team performance"),
+        "total": MessageLookupByLibrary.simpleMessage("Total"),
         "total_player": m0,
-        "training": MessageLookupByLibrary.simpleMessage("Team training"),
+        "training": MessageLookupByLibrary.simpleMessage("Training"),
+        "training_team": MessageLookupByLibrary.simpleMessage("Team training"),
         "type_of_activity":
             MessageLookupByLibrary.simpleMessage("Type of activity?"),
         "type_of_game": MessageLookupByLibrary.simpleMessage("Type of game"),
         "upload_media":
             MessageLookupByLibrary.simpleMessage("Please choose media"),
+        "you": MessageLookupByLibrary.simpleMessage("YOU"),
         "your_team": MessageLookupByLibrary.simpleMessage("Your Team")
       };
 }

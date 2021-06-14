@@ -1,10 +1,12 @@
 import 'package:bloc_example/generated/l10n.dart';
 import 'package:bloc_example/service/model/news_feed.dart';
 import 'package:bloc_example/theme/color.dart';
+import 'package:bloc_example/theme/image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pie_chart/pie_chart.dart';
+import 'package:pie_chart/pie_chart.dart' as PieChart;
 
 class NewsFeedComponent extends StatefulWidget {
   final NewsFeed? newsFeed;
@@ -49,13 +51,17 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
             indexNews = index;
           });
         },
-        height: 220+40,
+        height: 220 + 40,
         autoPlay: false,
         viewportFraction: 1,
       ),
       items: List<Widget>.generate(widget.newsFeed!.data!.length, (index) {
         if (widget.newsFeed!.data![index].type == "training")
           return buildTraining(widget.newsFeed!.data![index].training, index);
+        if (widget.newsFeed!.data![index].type == "graph")
+          return buildGraph(widget.newsFeed!.data![index].graphMatch, index);
+        if (widget.newsFeed!.data![index].type == "injury")
+          return buildInjury(widget.newsFeed!.data![index].injury);
         else
           return buildMatch(widget.newsFeed!.data![index].match, index);
       }),
@@ -86,24 +92,24 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            PieChart(
+            PieChart.PieChart(
               dataMap: result,
-              chartType: ChartType.ring,
+              chartType: PieChart.ChartType.ring,
               animationDuration: Duration(milliseconds: 800),
               chartRadius: 50,
               colorList: listColor,
               initialAngleInDegree: 150,
               ringStrokeWidth: 15,
-              legendOptions: LegendOptions(
+              legendOptions: PieChart.LegendOptions(
                 showLegendsInRow: false,
-                legendPosition: LegendPosition.right,
+                legendPosition: PieChart.LegendPosition.right,
                 showLegends: false,
                 //legendShape: _BoxShape.circle,
                 legendTextStyle: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              chartValuesOptions: ChartValuesOptions(
+              chartValuesOptions: PieChart.ChartValuesOptions(
                 showChartValueBackground: true,
                 showChartValues: false,
                 showChartValuesInPercentage: false,
@@ -328,6 +334,80 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
     );
   }
 
+  Widget buildGraph(GraphMatch? graphMatch, indexNews) {
+    List<Color> listColor = [
+      AppColor.green,
+      AppColor.purple,
+      AppColor.accentBlue
+    ];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: 220,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: LineChart(LineChartData(
+                titlesData: FlTitlesData(show: false),
+                lineTouchData: LineTouchData(enabled: false),
+                minY: -6,
+                maxY: 6,
+                gridData: FlGridData(checkToShowHorizontalLine: (double value) {
+                  if (value == 0)
+                    return true;
+                  else
+                    return false;
+                }),
+                lineBarsData: List<LineChartBarData>.generate(
+                    graphMatch!.graphData!.length, (int index) {
+                  return LineChartBarData(
+                      barWidth: 4,
+                      colors: [listColor[index]],
+                      spots: List<FlSpot>.generate(
+                          graphMatch.graphData![index].value!.length, (int i) {
+                        return FlSpot(
+                            graphMatch.graphData![index].value![i].time ?? 0,
+                            graphMatch.graphData![index].value![i].value ?? 0);
+                      }));
+                }))),
+          ),
+        ),
+        SizedBox(height: 20),
+        Row(
+          children: [
+            Spacer(),
+            ...graphMatch.graphData!
+                .map((e) => Padding(
+                    padding: EdgeInsets.only(left: 12),
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 10,
+                          width: 10,
+                          margin: EdgeInsets.only(right: 5),
+                          decoration: BoxDecoration(
+                            color: listColor[graphMatch.graphData!.indexOf(e)],
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                        Text(
+                          e.title ?? "",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(
+                                  color: listColor[
+                                      graphMatch.graphData!.indexOf(e)]),
+                        ),
+                      ],
+                    )))
+                .toList()
+          ],
+        )
+      ],
+    );
+  }
+
   Widget buildUserInfo() {
     return Row(
       children: [
@@ -405,6 +485,81 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
         SizedBox(width: 9),
         Text(widget.newsFeed!.data!.first.comment.toString()),
       ],
+    );
+  }
+
+  Widget buildInjury(Injury? injury) {
+    return SizedBox(
+      height: 220,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            body,
+            height: 220,
+            width: 150,
+            fit: BoxFit.fitHeight,
+          ),
+          SizedBox(width: 20),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 100,
+                  width: MediaQuery.of(context).size.width - 170 - 20,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: LineChart(LineChartData(
+                        titlesData: FlTitlesData(show: false),
+                        lineTouchData: LineTouchData(enabled: false),
+                        minY: 0,
+                        minX: injury!.value!.first.time,
+                        maxX: injury.value!.last.time,
+                        maxY: 6,
+                        gridData: FlGridData(
+                            checkToShowHorizontalLine: (double value) {
+                          if (value == 0)
+                            return true;
+                          else
+                            return false;
+                        }),
+                        lineBarsData: [
+                          LineChartBarData(
+                              colors: [AppColor.accentBlue],
+                              dotData: FlDotData(show: false),
+                              spots: injury.value!
+                                  .map((e) => FlSpot(e.time ?? 0, e.value ?? 0))
+                                  .toList())
+                        ])),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Text(
+                  injury.describe ?? "",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                SizedBox(height: 14),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 17, vertical: 5),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(64),
+                          color: AppColor.accentBlue),
+                      child: Text(injury.site ?? "",
+                          style: Theme.of(context).textTheme.bodyText1),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

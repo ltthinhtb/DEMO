@@ -1,8 +1,8 @@
 import 'package:bloc_example/global/widget/appbar.dart';
 import 'package:bloc_example/global/widget/drawer.dart';
+import 'package:bloc_example/page/dashboard/dashboard_page.dart';
 import 'package:bloc_example/page/feed/feed_page.dart';
 import 'package:bloc_example/page/home/bloc/home_bloc.dart';
-import 'package:bloc_example/page/sign_up_form/sign_up_form_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Widget> screen = [
     FeedPage(),
-    SignUpFormPage(),
+    DashboardPage(),
     Scaffold(
       appBar: AppBar(
         title: Text("1"),

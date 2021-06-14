@@ -18,6 +18,7 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
   List<Player> listPlayer = [];
 
   List<NewsFeed> listNews = [];
+
   final FeedRepository repository = FeedRepository();
 
   @override

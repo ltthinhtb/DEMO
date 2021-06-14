@@ -89,32 +89,60 @@ class FeedRepository {
                 comment: 15,
                 feeling: 48,
                 describe:
-                    "Injury description  ipsum dolor sit amet, consectetur adipiscing. Donec in dui dapibus.",
-                training: Training(
-                    timeTraning: "2020/01/31 18:00 - 19:45",
-                    totalTime: "1h 45min",
-                    chart: [
-                      Chart(chartItem: "Mental", percent: 20.0, time: "31m"),
-                      Chart(chartItem: "Physical", percent: 15.0, time: "31m"),
-                      Chart(chartItem: "Technical", percent: 15.0, time: "15m"),
-                      Chart(chartItem: "Tactical", percent: 50.0, time: "51m"),
-                    ]),
-                type: "training"),
+                "Lorem ipsum dolor sit amet, consectetur adipiscing. Donec in dui dapibus, blandit nibh eget, molestie nunc.",
+                type: "match",
+                match: Match(
+                    dateTime: "01/12 18:00",
+                    season: "League game, Camp Nou",
+                    team1: Team(
+                        score: 2,
+                        teamClub: "FC Barcelona",
+                        teamLogo:
+                        "https://upload.wikimedia.org/wikipedia/vi/thumb/9/91/FC_Barcelona_logo.svg/1200px-FC_Barcelona_logo.svg.png"),
+                    team2: Team(
+                        teamClub: "Liverpool FC",
+                        score: 2,
+                        teamLogo:
+                        "https://upload.wikimedia.org/wikipedia/vi/thumb/0/0c/Liverpool_FC.svg/1200px-Liverpool_FC.svg.png"),
+                    matchStats: [
+                      MatchStats(value: "90/90m", stats: "Min"),
+                      MatchStats(value: "CDM", stats: "Role"),
+                      MatchStats(value: "2/0", stats: "Goals/Ass"),
+                      MatchStats(value: "Yellow/Red", stats: "0/0"),
+                    ])),
             News(
                 comment: 15,
                 feeling: 48,
-                describe:
-                    "Consectetur adipiscing. Donec in dui dapibus, blandit nibh eget, molestie nunc.",
-                training: Training(
-                    timeTraning: "2020/01/31 18:00 - 19:45",
-                    totalTime: "1h 45min",
-                    chart: [
-                      Chart(chartItem: "Mental", percent: 20.0, time: "31m"),
-                      Chart(chartItem: "Physical", percent: 15.0, time: "31m"),
-                      Chart(chartItem: "Technical", percent: 15.0, time: "15m"),
-                      Chart(chartItem: "Tactical", percent: 50.0, time: "51m"),
-                    ]),
-                type: "training")
+                type: "graph",
+                graphMatch: GraphMatch(graphData: [
+                  GraphData(title: "Energy", value: [
+                    Value(value: -5, time: 0),
+                    Value(time: 1, value: 5),
+                    Value(time: 2, value: -2),
+                    Value(time: 3, value: -5),
+                    Value(time: 4, value: -2),
+                    Value(time: 5, value: 4),
+                    Value(time: 6, value: 5),
+                  ]),
+                  GraphData(title: "Sleep", value: [
+                    Value(value: 1, time: 0),
+                    Value(time: 1, value: -3),
+                    Value(time: 2, value: -4),
+                    Value(time: 3, value: -6),
+                    Value(time: 4, value: -4),
+                    Value(time: 5, value: -4),
+                    Value(time: 6, value: -1),
+                  ]),
+                  GraphData(title: "Eat", value: [
+                    Value(value: 5, time: 0),
+                    Value(time: 1, value: 2),
+                    Value(time: 2, value: 0),
+                    Value(time: 3, value: -4),
+                    Value(time: 4, value: 0),
+                    Value(time: 5, value: 0),
+                    Value(time: 6, value: 4),
+                  ])
+                ]))
           ]),
       NewsFeed(
           address: "SE/Stockholm/2007",
@@ -142,25 +170,141 @@ class FeedRepository {
                         score: 2,
                         teamLogo:
                             "https://upload.wikimedia.org/wikipedia/vi/thumb/0/0c/Liverpool_FC.svg/1200px-Liverpool_FC.svg.png"),
-                matchStats: [
-                  MatchStats(
-                    value: "90/90m",
-                    stats: "Min"
-                  ),
-
-                  MatchStats(
-                      value: "CDM",
-                      stats: "Role"
-                  ),
-                  MatchStats(
-                      value: "2/0",
-                      stats: "Goals/Ass"
-                  ),
-                  MatchStats(
-                      value: "Yellow/Red",
-                      stats: "0/0"
-                  ),
+                    matchStats: [
+                      MatchStats(value: "90/90m", stats: "Min"),
+                      MatchStats(value: "CDM", stats: "Role"),
+                      MatchStats(value: "2/0", stats: "Goals/Ass"),
+                      MatchStats(value: "Yellow/Red", stats: "0/0"),
+                    ])),
+            News(
+                comment: 15,
+                feeling: 48,
+                describe:
+                    "Injury description  ipsum dolor sit amet, consectetur adipiscing. Donec in dui dapibus.",
+                training: Training(
+                    timeTraning: "2020/01/31 18:00 - 19:45",
+                    totalTime: "1h 45min",
+                    chart: [
+                      Chart(chartItem: "Mental", percent: 20.0, time: "31m"),
+                      Chart(chartItem: "Physical", percent: 15.0, time: "31m"),
+                      Chart(chartItem: "Technical", percent: 15.0, time: "15m"),
+                      Chart(chartItem: "Tactical", percent: 50.0, time: "51m"),
+                    ]),
+                type: "training"),
+            News(
+                comment: 15,
+                feeling: 48,
+                type: "injury",
+                injury: Injury(
+                    site: "Knee",
+                    describe:
+                    "Injury description  ipsum dolor sit amet, consectetur adipiscing. Donec in dui dapibus.",
+                    value: [
+                      Value(time: 0, value: 1),
+                      Value(time: 1, value: 2),
+                      Value(time: 2, value: 2.5),
+                      Value(time: 3, value: 2.6),
+                      Value(time: 4, value: 3),
+                      Value(time: 5, value: 4),
+                      Value(time: 6, value: 3)
+                    ]))
+          ]),
+      NewsFeed(
+          address: "SE/Stockholm/2007",
+          timeAgo: "15 min",
+          userName: "Ali Keita",
+          userAvatar: "https://s.hs-data.com/bilder/spieler/gross/271639.jpg",
+          data: [
+            News(
+                comment: 15,
+                feeling: 48,
+                type: "graph",
+                graphMatch: GraphMatch(graphData: [
+                  GraphData(title: "Energy", value: [
+                    Value(value: -5, time: 0),
+                    Value(time: 1, value: 5),
+                    Value(time: 2, value: -2),
+                    Value(time: 3, value: -5),
+                    Value(time: 4, value: -2),
+                    Value(time: 5, value: 4),
+                    Value(time: 6, value: 5),
+                  ]),
+                  GraphData(title: "Sleep", value: [
+                    Value(value: 1, time: 0),
+                    Value(time: 1, value: -3),
+                    Value(time: 2, value: -4),
+                    Value(time: 3, value: -6),
+                    Value(time: 4, value: -4),
+                    Value(time: 5, value: -4),
+                    Value(time: 6, value: -1),
+                  ]),
+                  GraphData(title: "Eat", value: [
+                    Value(value: 5, time: 0),
+                    Value(time: 1, value: 2),
+                    Value(time: 2, value: 0),
+                    Value(time: 3, value: -4),
+                    Value(time: 4, value: 0),
+                    Value(time: 5, value: 0),
+                    Value(time: 6, value: 4),
+                  ])
                 ])),
+            News(
+                comment: 15,
+                feeling: 48,
+                type: "injury",
+                injury: Injury(
+                    site: "Knee",
+                    describe:
+                    "Injury description  ipsum dolor sit amet, consectetur adipiscing. Donec in dui dapibus.",
+                    value: [
+                      Value(time: 0, value: 1),
+                      Value(time: 1, value: 2),
+                      Value(time: 2, value: 2.5),
+                      Value(time: 3, value: 2.6),
+                      Value(time: 4, value: 3),
+                      Value(time: 5, value: 4),
+                      Value(time: 6, value: 3)
+                    ])),
+            News(
+                comment: 15,
+                feeling: 48,
+                describe:
+                    "Consectetur adipiscing. Donec in dui dapibus, blandit nibh eget, molestie nunc.",
+                training: Training(
+                    timeTraning: "2020/01/31 18:00 - 19:45",
+                    totalTime: "1h 45min",
+                    chart: [
+                      Chart(chartItem: "Mental", percent: 20.0, time: "31m"),
+                      Chart(chartItem: "Physical", percent: 15.0, time: "31m"),
+                      Chart(chartItem: "Technical", percent: 15.0, time: "15m"),
+                      Chart(chartItem: "Tactical", percent: 50.0, time: "51m"),
+                    ]),
+                type: "training")
+          ]),
+      NewsFeed(
+          address: "SE/Stockholm/2007",
+          timeAgo: "15 min",
+          userName: "Moha Dramaqueen",
+          userAvatar:
+              "https://vcdn-thethao.vnecdn.net/2020/01/30/eriksen-3905-1580342970.jpg",
+          data: [
+            News(
+                comment: 15,
+                feeling: 48,
+                type: "injury",
+                injury: Injury(
+                  site: "Knee",
+                    describe:
+                        "Injury description  ipsum dolor sit amet, consectetur adipiscing. Donec in dui dapibus.",
+                    value: [
+                      Value(time: 0, value: 1),
+                      Value(time: 1, value: 2),
+                      Value(time: 2, value: 2.5),
+                      Value(time: 3, value: 2.6),
+                      Value(time: 4, value: 3),
+                      Value(time: 5, value: 4),
+                      Value(time: 6, value: 3)
+                    ])),
             News(
                 comment: 15,
                 feeling: 48,
@@ -180,17 +324,27 @@ class FeedRepository {
                 comment: 15,
                 feeling: 48,
                 describe:
-                    "Consectetur adipiscing. Donec in dui dapibus, blandit nibh eget, molestie nunc.",
-                training: Training(
-                    timeTraning: "2020/01/31 18:00 - 19:45",
-                    totalTime: "1h 45min",
-                    chart: [
-                      Chart(chartItem: "Mental", percent: 20.0, time: "31m"),
-                      Chart(chartItem: "Physical", percent: 15.0, time: "31m"),
-                      Chart(chartItem: "Technical", percent: 15.0, time: "15m"),
-                      Chart(chartItem: "Tactical", percent: 50.0, time: "51m"),
-                    ]),
-                type: "training")
+                "Lorem ipsum dolor sit amet, consectetur adipiscing. Donec in dui dapibus, blandit nibh eget, molestie nunc.",
+                type: "match",
+                match: Match(
+                    dateTime: "01/12 18:00",
+                    season: "League game, Camp Nou",
+                    team1: Team(
+                        score: 2,
+                        teamClub: "FC Barcelona",
+                        teamLogo:
+                        "https://upload.wikimedia.org/wikipedia/vi/thumb/9/91/FC_Barcelona_logo.svg/1200px-FC_Barcelona_logo.svg.png"),
+                    team2: Team(
+                        teamClub: "Liverpool FC",
+                        score: 2,
+                        teamLogo:
+                        "https://upload.wikimedia.org/wikipedia/vi/thumb/0/0c/Liverpool_FC.svg/1200px-Liverpool_FC.svg.png"),
+                    matchStats: [
+                      MatchStats(value: "90/90m", stats: "Min"),
+                      MatchStats(value: "CDM", stats: "Role"),
+                      MatchStats(value: "2/0", stats: "Goals/Ass"),
+                      MatchStats(value: "Yellow/Red", stats: "0/0"),
+                    ]))
           ]),
     ];
   }

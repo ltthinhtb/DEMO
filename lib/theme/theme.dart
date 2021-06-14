@@ -62,9 +62,9 @@ class AppTheme {
     canvasColor: AppColor.black,
     brightness: Brightness.dark,
     backgroundColor: AppColor.black,
-    primaryColor: AppColor.darkPrimary,
+    primaryColor: AppColor.black,
     accentColor: AppColor.darkAccent,
-    scaffoldBackgroundColor: AppColor.darkPrimary,
+    scaffoldBackgroundColor: AppColor.black,
     iconTheme: IconThemeData(color: AppColor.grey_50),
     buttonColor: AppColor.grey,
     sliderTheme: SliderThemeData(

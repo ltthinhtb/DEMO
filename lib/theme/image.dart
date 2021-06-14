@@ -1,0 +1,1 @@
+final String body = 'assets/body.png';

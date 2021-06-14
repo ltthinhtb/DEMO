@@ -50,7 +50,12 @@
   "biography" : "Biography",
   "support" : "Support",
   "diary" : "Diary",
-  "training" : "Team training"
+  "training_team": "Team training",
+  "total" : "Total",
+  "training" : "Training",
+  "matches" : "Matches",
+  "you" : "YOU",
+  "avg" : "AVG"
 
 
 

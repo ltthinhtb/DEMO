@@ -41,6 +41,8 @@ class News {
   int? feeling;
   int? comment;
   Match? match;
+  GraphMatch? graphMatch;
+  Injury? injury;
 
   News(
       {this.type,
@@ -48,7 +50,9 @@ class News {
       this.describe,
       this.feeling,
       this.comment,
-      this.match});
+      this.match,
+      this.graphMatch,
+      this.injury});
 
   News.fromJson(Map<String, dynamic> json) {
     type = json['type'];
@@ -58,7 +62,12 @@ class News {
     describe = json['describe'];
     feeling = json['feeling'];
     comment = json['comment'];
+    injury =
+        json['injury'] != null ? new Injury.fromJson(json['injury']) : null;
     match = json['match'] != null ? new Match.fromJson(json['match']) : null;
+    graphMatch = json['graph_match'] != null
+        ? new GraphMatch.fromJson(json['graph_match'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -73,6 +82,13 @@ class News {
     if (this.match != null) {
       data['match'] = this.match!.toJson();
     }
+    if (this.injury != null) {
+      data['injury'] = this.injury!.toJson();
+    }
+    if (this.graphMatch != null) {
+      data['graph_match'] = this.graphMatch!.toJson();
+    }
+
     return data;
   }
 }
@@ -207,3 +223,101 @@ class Team {
     return data;
   }
 }
+
+class GraphMatch {
+  List<GraphData>? graphData;
+
+  GraphMatch({this.graphData});
+
+  GraphMatch.fromJson(Map<String, dynamic> json) {
+    if (json['graph_data'] != null) {
+      graphData = <GraphData>[];
+      json['graph_data'].forEach((v) {
+        graphData!.add(new GraphData.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.graphData != null) {
+      data['graph_data'] = this.graphData!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class GraphData {
+  String? title;
+  List<Value>? value;
+
+  GraphData({this.title, this.value});
+
+  GraphData.fromJson(Map<String, dynamic> json) {
+    title = json['title'];
+    if (json['value'] != null) {
+      value = <Value>[];
+      json['value'].forEach((v) {
+        value!.add(new Value.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['title'] = this.title;
+    if (this.value != null) {
+      data['value'] = this.value!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Value {
+  double? time;
+  double? value;
+
+  Value({this.time, this.value});
+
+  Value.fromJson(Map<String, dynamic> json) {
+    time = json['time'];
+    value = json['value'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['time'] = this.time;
+    data['value'] = this.value;
+    return data;
+  }
+}
+
+class Injury {
+  String? site;
+  String? describe;
+  List<Value>? value;
+
+  Injury({this.site, this.describe, this.value});
+
+  Injury.fromJson(Map<String, dynamic> json) {
+    site = json['site'];
+    describe = json['describe'];
+    if (json['value'] != null) {
+      value =  <Value>[];
+      json['value'].forEach((v) {
+        value!.add(new Value.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['site'] = this.site;
+    data['describe'] = this.describe;
+    if (this.value != null) {
+      data['value'] = this.value!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+

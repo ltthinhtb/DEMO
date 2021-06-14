@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_photo": MessageLookupByLibrary.simpleMessage("Thêm ảnh"),
         "arena": MessageLookupByLibrary.simpleMessage("Đấu trường"),
         "assist": MessageLookupByLibrary.simpleMessage("Hỗ trợ"),
+        "avg": MessageLookupByLibrary.simpleMessage("Trung Bình"),
         "biography": MessageLookupByLibrary.simpleMessage("Tiểu sử"),
         "birthday": MessageLookupByLibrary.simpleMessage("Ngày sinh"),
         "body_image": MessageLookupByLibrary.simpleMessage("Ảnh thân hình"),
@@ -61,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Đánh giá trận đấu"),
         "match_review_label":
             MessageLookupByLibrary.simpleMessage("Mô tả về trận đấu"),
+        "matches": MessageLookupByLibrary.simpleMessage("Trận đấu"),
         "minute": MessageLookupByLibrary.simpleMessage("Phút"),
         "next": MessageLookupByLibrary.simpleMessage("Tiếp theo"),
         "opponent_club":
@@ -84,13 +86,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "support": MessageLookupByLibrary.simpleMessage("Hỗ trợ"),
         "team_performance":
             MessageLookupByLibrary.simpleMessage("Đánh giá đội hình"),
+        "total": MessageLookupByLibrary.simpleMessage("Tất cả"),
         "total_player": m0,
-        "training": MessageLookupByLibrary.simpleMessage("Huấn luyện team"),
+        "training": MessageLookupByLibrary.simpleMessage("Huấn luyện"),
+        "training_team":
+            MessageLookupByLibrary.simpleMessage("Huấn luyện team"),
         "type_of_activity":
             MessageLookupByLibrary.simpleMessage("Mức độ hoạt động?"),
         "type_of_game": MessageLookupByLibrary.simpleMessage("Mùa giải"),
         "upload_media":
             MessageLookupByLibrary.simpleMessage("Please choose media"),
+        "you": MessageLookupByLibrary.simpleMessage("Bạn"),
         "your_team": MessageLookupByLibrary.simpleMessage("Team của bạn")
       };
 }

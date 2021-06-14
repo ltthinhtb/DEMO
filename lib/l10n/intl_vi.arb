@@ -50,7 +50,12 @@
   "biography" : "Tiểu sử",
   "support" : "Hỗ trợ",
   "diary" : "Nhật ký",
-  "training" : "Huấn luyện team"
+  "training_team": "Huấn luyện team",
+  "total" : "Tất cả",
+  "training" : "Huấn luyện",
+  "matches" : "Trận đấu",
+  "you" : "Bạn",
+  "avg" : "Trung Bình"
 
 
 
