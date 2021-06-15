@@ -23,6 +23,6 @@ class AppTextStyle {
 
   static TextStyle get bodySmall {
     return TextStyle(
-        fontFamily: "Gilroy", fontWeight: FontWeight.w400, fontSize: 11);
+        fontFamily: "Gilroy", fontWeight: FontWeight.w400, fontSize: 12);
   }
 }

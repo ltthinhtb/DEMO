@@ -3,30 +3,28 @@ import 'package:bloc_example/theme/styles.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
-
-
   static TextTheme get _lightTextTheme {
     return TextTheme(
-      headline1: AppTextStyle.h1,
-      headline2 :AppTextStyle.h2,
-      bodyText1: AppTextStyle.body,
-      bodyText2: AppTextStyle.body1,
-      headline3: AppTextStyle.bodySmall
-      // Using Text Theme with Theme.of(context).textTheme.bodyText2,
-      //We using text theme from headline5 because of default color of headline 1-4 not exactly like black or white
-    );
+        headline1: AppTextStyle.h1,
+        headline2: AppTextStyle.h2,
+        bodyText1: AppTextStyle.body,
+        bodyText2: AppTextStyle.body1,
+        headline3: AppTextStyle.bodySmall
+        // Using Text Theme with Theme.of(context).textTheme.bodyText2,
+        //We using text theme from headline5 because of default color of headline 1-4 not exactly like black or white
+        );
   }
 
   static TextTheme get _darkTextTheme {
     return TextTheme(
         headline1: AppTextStyle.h1,
-        headline2 :AppTextStyle.h2,
+        headline2: AppTextStyle.h2,
         bodyText1: AppTextStyle.body,
         bodyText2: AppTextStyle.body1,
         headline3: AppTextStyle.bodySmall
-      // Using Text Theme with Theme.of(context).textTheme.bodyText2,
-      //We using text theme from headline5 because of default color of headline 1-4 not exactly like black or white
-    );
+        // Using Text Theme with Theme.of(context).textTheme.bodyText2,
+        //We using text theme from headline5 because of default color of headline 1-4 not exactly like black or white
+        );
   }
 
   static ThemeData lightTheme = ThemeData.light().copyWith(
@@ -46,6 +44,8 @@ class AppTheme {
       thumbColor: AppColor.greenAccent,
     ),
     buttonColor: AppColor.grey,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: AppColor.accentBlue),
     appBarTheme: AppBarTheme(
       textTheme: TextTheme(
         headline6: TextStyle(
@@ -67,6 +67,8 @@ class AppTheme {
     scaffoldBackgroundColor: AppColor.black,
     iconTheme: IconThemeData(color: AppColor.grey_50),
     buttonColor: AppColor.grey,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: AppColor.blue),
     sliderTheme: SliderThemeData(
       activeTrackColor: AppColor.greenAccent,
       inactiveTrackColor: AppColor.grey_500,
@@ -85,11 +87,7 @@ class AppTheme {
       ),
     ),
   );
-
 }
-
-
-
 
 class CustomTrackShape extends RoundedRectSliderTrackShape {
   Rect getPreferredRect({

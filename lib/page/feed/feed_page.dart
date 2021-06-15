@@ -3,6 +3,7 @@ import 'package:bloc_example/page/feed/bloc/feed_bloc.dart';
 import 'package:bloc_example/page/feed/widget/news_feed_component.dart';
 import 'package:bloc_example/service/model/match_update_form_model.dart';
 import 'package:bloc_example/theme/color.dart';
+import 'package:bloc_example/util/route/app_routing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,35 +24,45 @@ class _FeedPageState extends State<FeedPage> {
       child: BlocBuilder<FeedBloc, FeedState>(
         builder: (context, state) {
           FeedBloc _bloc = context.read<FeedBloc>();
-          return DefaultTabController(
-            length: 1,
-            child: SingleChildScrollView(
-              child: Container(
-                color: AppColor.darkPrimary,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    buildTab(),
-                    SizedBox(height: 10),
-                    buildListPlayerRow(context.read<FeedBloc>().listPlayer),
-                    SizedBox(height: 16),
-                    ListView.separated(
-                      physics: NeverScrollableScrollPhysics(),
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return NewsFeedComponent(
-                              newsFeed: _bloc.listNews[index]);
-                        },
-                        separatorBuilder: (context, index) {
-                          return SizedBox(height: 16);
-                        },
-                        itemCount: _bloc.listNews.length),
-                    SizedBox(height: 20)
-                  ],
+          return Scaffold(
+            body: DefaultTabController(
+              length: 1,
+              child: SingleChildScrollView(
+                child: Container(
+                  color: AppColor.darkPrimary,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      buildTab(),
+                      SizedBox(height: 10),
+                      buildListPlayerRow(context.read<FeedBloc>().listPlayer),
+                      SizedBox(height: 16),
+                      ListView.separated(
+                          physics: NeverScrollableScrollPhysics(),
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return NewsFeedComponent(
+                                newsFeed: _bloc.listNews[index]);
+                          },
+                          separatorBuilder: (context, index) {
+                            return SizedBox(height: 16);
+                          },
+                          itemCount: _bloc.listNews.length),
+                      SizedBox(height: 20)
+                    ],
+                  ),
                 ),
               ),
             ),
+              //floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
+              floatingActionButton: FloatingActionButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, RouteDefine.MathUpdateForm.name);
+                },
+                tooltip: 'Increment',
+                child: Icon(Icons.add,color: AppColor.white),
+              )
           );
         },
       ),

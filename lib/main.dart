@@ -1,5 +1,4 @@
 import 'package:bloc_example/page/config/config.dart';
-import 'package:bloc_example/page/home/home_page.dart';
 import 'package:bloc_example/page/sign_up_form/sign_up_form_page.dart';
 import 'package:bloc_example/theme/color.dart';
 import 'package:bloc_example/theme/theme.dart';
@@ -13,6 +12,7 @@ import 'generated/l10n.dart';
 import 'page/match_form_update/match_form_update_page.dart';
 import 'service/model/app_config_model.dart';
 import 'util/const.dart';
+import 'util/route/app_routing.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -91,7 +91,8 @@ class _MyAppState extends State<MyApp> {
                     locale: _bloc.configModel.locale ?? Locale(Const.LOCALE_EN),
                     title: 'Flutter Bloc',
                     theme: _bloc.configModel.themeData ?? AppTheme.lightTheme,
-                    home: HomePage(),
+                    onGenerateRoute: AppRouting.generateRoute,
+                    initialRoute: RouteDefine.Home.name,
                   );
                 },
               ));

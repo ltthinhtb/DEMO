@@ -77,6 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please input phone Number"),
         "please_input_your_team":
             MessageLookupByLibrary.simpleMessage("Please input your team"),
+        "practice_tag":
+            MessageLookupByLibrary.simpleMessage("Practice Tag Cloud"),
         "result": MessageLookupByLibrary.simpleMessage("Result"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "sign_up_form": MessageLookupByLibrary.simpleMessage("Sign up form"),
@@ -87,6 +89,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_player": m0,
         "training": MessageLookupByLibrary.simpleMessage("Training"),
         "training_team": MessageLookupByLibrary.simpleMessage("Team training"),
+        "training_update":
+            MessageLookupByLibrary.simpleMessage("Training updates"),
         "type_of_activity":
             MessageLookupByLibrary.simpleMessage("Type of activity?"),
         "type_of_game": MessageLookupByLibrary.simpleMessage("Type of game"),

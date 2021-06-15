@@ -1,9 +1,12 @@
 import 'package:bloc_example/generated/l10n.dart';
 import 'package:bloc_example/page/dashboard/bloc/dashboard_bloc.dart';
-import 'package:bloc_example/page/dashboard/widget/total_component.dart';
+import 'package:bloc_example/page/dashboard/widget/match_component.dart';
 import 'package:bloc_example/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'widget/total_component.dart';
+import 'widget/training_component.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -13,30 +16,29 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-
   @override
   Widget build(BuildContext context) {
-    List<Widget> listTabView = [
-      TotalComponent(),
-      Icon(Icons.directions_transit),
-      Icon(Icons.directions_bike)
-    ];
     return BlocProvider(
       create: (context) => DashboardBloc(),
-      child: BlocBuilder<DashboardBloc,DashboardState>(builder: (context, state) {
+      child:
+          BlocBuilder<DashboardBloc, DashboardState>(builder: (context, state) {
         DashboardBloc _bloc = context.read<DashboardBloc>();
+        List<Widget> listTabView = [
+          TotalComponent(),
+          TrainingComponent(),
+          MatchComponent()
+        ];
         return DefaultTabController(
           length: 3,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildTab(_bloc),
-                IndexedStack(
-                  children: listTabView,
-                  index: _bloc.position
-                )
-              ],
+          child: Scaffold(
+            body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  buildTab(_bloc),
+                  IndexedStack(children: listTabView, index: _bloc.position)
+                ],
+              ),
             ),
           ),
         );

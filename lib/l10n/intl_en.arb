@@ -55,7 +55,9 @@
   "training" : "Training",
   "matches" : "Matches",
   "you" : "YOU",
-  "avg" : "AVG"
+  "avg" : "AVG",
+  "practice_tag" : "Practice Tag Cloud",
+  "training_update" : "Training updates"
 
 
 

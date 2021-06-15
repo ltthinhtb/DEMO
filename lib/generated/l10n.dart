@@ -619,6 +619,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Practice Tag Cloud`
+  String get practice_tag {
+    return Intl.message(
+      'Practice Tag Cloud',
+      name: 'practice_tag',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Training updates`
+  String get training_update {
+    return Intl.message(
+      'Training updates',
+      name: 'training_update',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

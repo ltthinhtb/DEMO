@@ -80,6 +80,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập số điện thoại"),
         "please_input_your_team":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập đội của bạn"),
+        "practice_tag":
+            MessageLookupByLibrary.simpleMessage("Thực hành Tag Cloud"),
         "result": MessageLookupByLibrary.simpleMessage("Kết quả"),
         "save": MessageLookupByLibrary.simpleMessage("Lưu"),
         "sign_up_form": MessageLookupByLibrary.simpleMessage("Đăng ký"),
@@ -91,6 +93,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "training": MessageLookupByLibrary.simpleMessage("Huấn luyện"),
         "training_team":
             MessageLookupByLibrary.simpleMessage("Huấn luyện team"),
+        "training_update":
+            MessageLookupByLibrary.simpleMessage("Cập nhật huấn luyện"),
         "type_of_activity":
             MessageLookupByLibrary.simpleMessage("Mức độ hoạt động?"),
         "type_of_game": MessageLookupByLibrary.simpleMessage("Mùa giải"),

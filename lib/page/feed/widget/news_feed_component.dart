@@ -6,7 +6,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pie_chart/pie_chart.dart' as PieChart;
 
 class NewsFeedComponent extends StatefulWidget {
   final NewsFeed? newsFeed;
@@ -69,18 +68,6 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
   }
 
   Widget buildTraining(Training? training, int indexNews) {
-    Map<String, double> result =
-        Map.fromIterable(training!.chart as List<Chart>, key: (element) {
-      if (element is Chart) {
-        return element.chartItem ?? "";
-      } else
-        return "";
-    }, value: (element) {
-      if (element is Chart)
-        return element.percent ?? 0.0;
-      else
-        return 0;
-    });
     List<Color> listColor = [
       AppColor.green,
       AppColor.accentBlue,
@@ -90,30 +77,26 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
     return Column(
       children: [
         Row(
-          mainAxisSize: MainAxisSize.min,
           children: [
-            PieChart.PieChart(
-              dataMap: result,
-              chartType: PieChart.ChartType.ring,
-              animationDuration: Duration(milliseconds: 800),
-              chartRadius: 50,
-              colorList: listColor,
-              initialAngleInDegree: 150,
-              ringStrokeWidth: 15,
-              legendOptions: PieChart.LegendOptions(
-                showLegendsInRow: false,
-                legendPosition: PieChart.LegendPosition.right,
-                showLegends: false,
-                //legendShape: _BoxShape.circle,
-                legendTextStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              chartValuesOptions: PieChart.ChartValuesOptions(
-                showChartValueBackground: true,
-                showChartValues: false,
-                showChartValuesInPercentage: false,
-                showChartValuesOutside: true,
+            SizedBox(
+              height: 75,
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: PieChart(PieChartData(
+                    startDegreeOffset: 150,
+                    borderData: FlBorderData(
+                      show: false,
+                    ),
+                    sectionsSpace: 4,
+                    sections: training?.chart!
+                        .map((element) => PieChartSectionData(
+                        showTitle: false,
+                        color: listColor[
+                        training.chart!.indexOf(element)],
+                        title: element.chartItem,
+                        radius: 15,
+                        value: element.percent))
+                        .toList())),
               ),
             ),
             SizedBox(width: 10),
@@ -125,7 +108,7 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
                       style: Theme.of(context).textTheme.headline1),
                   SizedBox(height: 5),
                   Text(
-                    "${training.timeTraning}",
+                    "${training?.timeTraning}",
                     style: Theme.of(context)
                         .textTheme
                         .bodyText1!
@@ -141,7 +124,7 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
                   borderRadius: BorderRadius.circular(3),
                   border: Border.all(color: AppColor.red)),
               child: Text(
-                training.totalTime ?? "",
+                training?.totalTime ?? "",
                 style: Theme.of(context).textTheme.bodyText2,
               ),
             ),
@@ -160,7 +143,7 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        training.chart![index].chartItem ?? "",
+                        training!.chart![index].chartItem ?? "",
                         style: Theme.of(context)
                             .textTheme
                             .bodyText1!
@@ -184,7 +167,7 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
                   ),
                 );
               },
-              itemCount: training.chart!.length),
+              itemCount: training!.chart!.length),
         ),
         Divider(
           thickness: 1,

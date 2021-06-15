@@ -1,4 +1,5 @@
 import 'package:bloc_example/service/model/total_value.dart';
+import 'package:bloc_example/service/repository/practice_row.dart';
 
 class DashBoardRepository {
   Future<TotalData> getTotalData() async {
@@ -36,5 +37,33 @@ class DashBoardRepository {
         Chart(chartItem: 'Injured', chartValue: 5),
       ])
     ]);
+  }
+
+  Future<List<String>> getChoiceList() async {
+    return [
+      "Tag Lorem ijs",
+      "Tag",
+      "Tag",
+      "Tag",
+      "Long Tag Lorem ijs",
+      "Tag",
+      "Tag Lorem",
+      "Tag",
+      "Tag",
+      "Long Tag Lorem ijs",
+      "Tag"
+    ];
+  }
+
+  Future<List<PracticeRow>> getTable() async {
+    return [
+      PracticeRow(
+          type: "Training", hour: 147, hourAvg: 263, sec: 87, secAvg: 80),
+      PracticeRow(
+          type: "Technical", hour: 147, hourAvg: 263, sec: 87, secAvg: 80),
+      PracticeRow(
+          type: " Physical", hour: 147, hourAvg: 263, sec: 87, secAvg: 80),
+      PracticeRow(type: " Mental", hour: 147, hourAvg: 263, sec: 87, secAvg: 80)
+    ];
   }
 }
