@@ -1,5 +1,5 @@
 import 'package:bloc_example/service/model/total_value.dart';
-import 'package:bloc_example/service/repository/practice_row.dart';
+import 'package:bloc_example/service/model/practice_row.dart';
 
 class DashBoardRepository {
   Future<TotalData> getTotalData() async {

@@ -1,4 +1,6 @@
 import 'package:bloc_example/generated/l10n.dart';
+import 'package:bloc_example/global/widget/text_field.dart';
+import 'package:bloc_example/service/model/comment.dart';
 import 'package:bloc_example/service/model/news_feed.dart';
 import 'package:bloc_example/theme/color.dart';
 import 'package:bloc_example/theme/image.dart';
@@ -18,6 +20,7 @@ class NewsFeedComponent extends StatefulWidget {
 
 class _NewsFeedComponentState extends State<NewsFeedComponent> {
   int indexNews = 0;
+  TextEditingController _commentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -90,12 +93,11 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
                     sectionsSpace: 4,
                     sections: training?.chart!
                         .map((element) => PieChartSectionData(
-                        showTitle: false,
-                        color: listColor[
-                        training.chart!.indexOf(element)],
-                        title: element.chartItem,
-                        radius: 15,
-                        value: element.percent))
+                            showTitle: false,
+                            color: listColor[training.chart!.indexOf(element)],
+                            title: element.chartItem,
+                            radius: 15,
+                            value: element.percent))
                         .toList())),
               ),
             ),
@@ -464,7 +466,9 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
           ),
         ),
         Spacer(),
-        Icon(Icons.comment_bank_outlined, color: AppColor.green),
+        GestureDetector(
+            onTap: () => _modalBottomSheetMenu(),
+            child: Icon(Icons.comment_bank_outlined, color: AppColor.grey)),
         SizedBox(width: 9),
         Text(widget.newsFeed!.data!.first.comment.toString()),
       ],
@@ -544,5 +548,133 @@ class _NewsFeedComponentState extends State<NewsFeedComponent> {
         ],
       ),
     );
+  }
+
+  void _modalBottomSheetMenu() {
+    showModalBottomSheet(
+        context: context,
+        builder: (builder) {
+          return Container(
+            color: AppColor.black,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 15, right: 32),
+                        child: GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Icon(
+                              Icons.chevron_left,
+                              color: AppColor.grey,
+                            )),
+                      ),
+                      Text(S.current.comment,
+                          style: Theme.of(context).textTheme.headline1)
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+                    decoration: BoxDecoration(
+                        color: AppColor.blackGrey,
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(30),
+                            topLeft: Radius.circular(30))),
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: [
+                        ...[
+                          Comment(
+                              avatar:
+                                  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/200px-Cristiano_Ronaldo_2018.jpg",
+                              comment:
+                                  "Morbi eu molestie justo. Vivamus bibendum tortor elementum dapibus porta. Fusce augue lorem.",
+                              timeAge: "15 min ago",
+                              user: "#Ronaldinho",
+                              yourLike: false),
+                        ]
+                            .map((e) => Container(
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.network(
+                                            e.avatar ?? placeholder,
+                                            height: 50,
+                                            width: 50,
+                                            fit: BoxFit.cover),
+                                      ),
+                                      SizedBox(width: 16),
+                                      Expanded(
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  e.user ?? "",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyText1,
+                                                ),
+                                                SizedBox(width: 5),
+                                                Icon(
+                                                  Icons.access_time,
+                                                  size: 15,
+                                                ),
+                                                SizedBox(width: 3),
+                                                Text(
+                                                  e.timeAge ?? "",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyText1!
+                                                      .copyWith(
+                                                          color: AppColor.grey),
+                                                ),
+                                                Spacer(),
+                                                Icon(
+                                                  Icons
+                                                      .favorite_border_outlined,
+                                                  color: (e.yourLike ?? false)
+                                                      ? AppColor.greenAccent
+                                                      : AppColor.grey,
+                                                )
+                                              ],
+                                            ),
+                                            SizedBox(height: 5),
+                                            Text(e.comment ?? "",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1)
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ))
+                            .toList(),
+                        SizedBox(height: 50),
+                        buildTextField(_commentController,
+                            suffixIcon: Icon(
+                              Icons.send,
+                              color: AppColor.blue,
+                            ))
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        });
   }
 }

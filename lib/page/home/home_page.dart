@@ -1,5 +1,6 @@
 import 'package:bloc_example/global/widget/appbar.dart';
 import 'package:bloc_example/global/widget/drawer.dart';
+import 'package:bloc_example/page/biography/biography.dart';
 import 'package:bloc_example/page/dashboard/dashboard_page.dart';
 import 'package:bloc_example/page/feed/feed_page.dart';
 import 'package:bloc_example/page/home/bloc/home_bloc.dart';
@@ -22,11 +23,7 @@ class _HomePageState extends State<HomePage> {
         title: Text("1"),
       ),
     ),
-    Scaffold(
-      appBar: AppBar(
-        title: Text("2"),
-      ),
-    ),
+    Biography(),
     Scaffold(
       appBar: AppBar(
         title: Text("3"),

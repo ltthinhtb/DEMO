@@ -18,14 +18,16 @@ class _MatchComponentState extends State<MatchComponent> {
   @override
   Widget build(BuildContext context) {
     DashboardBloc _bloc = BlocProvider.of<DashboardBloc>(context);
-    return Column(
-      children: [
-        SizedBox(height: 20),
-        textIntroduce(),
-        SizedBox(height: 20),
-        buildMainColumn(_bloc),
-        SizedBox(height: 20),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 20),
+          textIntroduce(),
+          SizedBox(height: 20),
+          buildMainColumn(_bloc),
+          SizedBox(height: 20),
+        ],
+      ),
     );
   }
 

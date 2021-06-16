@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:bloc_example/global/widget/video_play.dart';
+import 'package:bloc_example/theme/image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerComponent extends StatefulWidget {
@@ -53,10 +55,7 @@ class _VideoPlayerComponentState extends State<VideoPlayerComponent> {
                   VideoPlayer(_controller),
                   Align(
                       alignment: Alignment.center,
-                      child: Icon(
-                        Icons.play_arrow,
-                        size: 32,
-                      )),
+                      child: SvgPicture.asset(playIcon)),
                 ],
               ))),
     );

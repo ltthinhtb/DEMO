@@ -21,13 +21,15 @@ class _TotalComponentState extends State<TotalComponent> {
   @override
   Widget build(BuildContext context) {
     DashboardBloc _bloc = BlocProvider.of<DashboardBloc>(context);
-    return Column(
-      children: [
-        SizedBox(height: 20),
-        textIntroduce(),
-        SizedBox(height: 14),
-        buildMainColumn(_bloc)
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 20),
+          textIntroduce(),
+          SizedBox(height: 14),
+          buildMainColumn(_bloc)
+        ],
+      ),
     );
   }
 

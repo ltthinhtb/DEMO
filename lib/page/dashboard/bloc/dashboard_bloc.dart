@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_example/service/model/total_value.dart';
 import 'package:bloc_example/service/repository/dashboard_repository.dart';
-import 'package:bloc_example/service/repository/practice_row.dart';
+import 'package:bloc_example/service/model/practice_row.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 

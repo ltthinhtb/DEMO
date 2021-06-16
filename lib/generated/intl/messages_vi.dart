@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tài khoản và cài đặt"),
         "action": MessageLookupByLibrary.simpleMessage("Hoạt động"),
         "add_photo": MessageLookupByLibrary.simpleMessage("Thêm ảnh"),
+        "age": MessageLookupByLibrary.simpleMessage("Tuổi"),
         "arena": MessageLookupByLibrary.simpleMessage("Đấu trường"),
         "assist": MessageLookupByLibrary.simpleMessage("Hỗ trợ"),
         "avg": MessageLookupByLibrary.simpleMessage("Trung Bình"),
@@ -36,15 +37,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "camera": MessageLookupByLibrary.simpleMessage("Máy ảnh"),
         "city": MessageLookupByLibrary.simpleMessage("Thành Phố"),
         "club": MessageLookupByLibrary.simpleMessage("Câu lạc bộ"),
+        "comment": MessageLookupByLibrary.simpleMessage("Bình luận"),
         "country": MessageLookupByLibrary.simpleMessage("Quốc gia"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Bảng điều khiển"),
         "date_time": MessageLookupByLibrary.simpleMessage("Ngày giờ"),
         "diary": MessageLookupByLibrary.simpleMessage("Nhật ký"),
         "diary_update":
             MessageLookupByLibrary.simpleMessage("Cập nhật nhật ký"),
+        "education": MessageLookupByLibrary.simpleMessage("Học vấn"),
         "face_image": MessageLookupByLibrary.simpleMessage("Ảnh khuôn mặt"),
+        "fans": MessageLookupByLibrary.simpleMessage("Người hâm mộ"),
         "feed": MessageLookupByLibrary.simpleMessage("Bảng tin"),
         "first_name": MessageLookupByLibrary.simpleMessage("HỌ"),
+        "follow": MessageLookupByLibrary.simpleMessage("Lượt theo dõi"),
+        "friends": MessageLookupByLibrary.simpleMessage("Bạn bè"),
         "gallery": MessageLookupByLibrary.simpleMessage("Thư viện"),
         "goalscorer": MessageLookupByLibrary.simpleMessage("Người ghi bàn"),
         "hello": MessageLookupByLibrary.simpleMessage("Xin Chào"),
@@ -58,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "How physically strain, was it? "),
         "last_name": MessageLookupByLibrary.simpleMessage("Tên"),
         "length": MessageLookupByLibrary.simpleMessage("Thời gian"),
+        "level": MessageLookupByLibrary.simpleMessage("Trình độ"),
         "match_review":
             MessageLookupByLibrary.simpleMessage("Đánh giá trận đấu"),
         "match_review_label":
@@ -80,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập số điện thoại"),
         "please_input_your_team":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập đội của bạn"),
+        "position": MessageLookupByLibrary.simpleMessage("Vị trí"),
         "practice_tag":
             MessageLookupByLibrary.simpleMessage("Thực hành Tag Cloud"),
         "result": MessageLookupByLibrary.simpleMessage("Kết quả"),

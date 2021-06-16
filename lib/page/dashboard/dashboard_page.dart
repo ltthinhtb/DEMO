@@ -31,14 +31,9 @@ class _DashboardPageState extends State<DashboardPage> {
         return DefaultTabController(
           length: 3,
           child: Scaffold(
-            body: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  buildTab(_bloc),
-                  IndexedStack(children: listTabView, index: _bloc.position)
-                ],
-              ),
+            appBar: buildTab(_bloc),
+            body: TabBarView(
+              children: listTabView,
             ),
           ),
         );
@@ -46,7 +41,7 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 
-  Widget buildTab(DashboardBloc _bloc) {
+  PreferredSizeWidget buildTab(DashboardBloc _bloc) {
     List<String> tabs = [
       S.current.total,
       S.current.training,

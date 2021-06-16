@@ -639,6 +639,86 @@ class S {
       args: [],
     );
   }
+
+  /// `POSITION`
+  String get position {
+    return Intl.message(
+      'POSITION',
+      name: 'position',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EDUCATION`
+  String get education {
+    return Intl.message(
+      'EDUCATION',
+      name: 'education',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EXP.LEVEL`
+  String get level {
+    return Intl.message(
+      'EXP.LEVEL',
+      name: 'level',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AGE`
+  String get age {
+    return Intl.message(
+      'AGE',
+      name: 'age',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Friends`
+  String get friends {
+    return Intl.message(
+      'Friends',
+      name: 'friends',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fans`
+  String get fans {
+    return Intl.message(
+      'Fans',
+      name: 'fans',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follow`
+  String get follow {
+    return Intl.message(
+      'Follow',
+      name: 'follow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comment`
+  String get comment {
+    return Intl.message(
+      'Comment',
+      name: 'comment',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
